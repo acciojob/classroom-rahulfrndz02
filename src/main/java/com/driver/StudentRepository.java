@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-@Component
 @Repository
 public class StudentRepository {
     private static HashMap<String, Student> studentDb;
@@ -32,11 +31,11 @@ public class StudentRepository {
     public static void saveStudentTeacherPair(String movie, String Director){
 
         if(teacherDb.containsKey(Director) && studentDb.containsKey(movie)){
-            List<String> currentMovies=new ArrayList<>();
+            List<String> currentStudents=new ArrayList<>();
             if(pairDb.containsKey(Director)){
-                currentMovies=pairDb.get(Director);
-                currentMovies.add(movie);
-                pairDb.put(Director,currentMovies);
+                currentStudents=pairDb.get(Director);
+                currentStudents.add(movie);
+                pairDb.put(Director,currentStudents);
             }
         }
     }
