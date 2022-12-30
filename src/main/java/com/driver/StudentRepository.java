@@ -28,16 +28,11 @@ public class StudentRepository {
         teacherDb.put(teacher.getName(), teacher);
     }
 
-    public static void saveStudentTeacherPair(String movie, String Director){
+    public static void saveStudentTeacherPair(String student, String teacher){
 
-        if(teacherDb.containsKey(Director) && studentDb.containsKey(movie)){
-            List<String> currentStudents=new ArrayList<>();
-            if(pairDb.containsKey(Director)){
-                currentStudents=pairDb.get(Director);
-                currentStudents.add(movie);
-                pairDb.put(Director,currentStudents);
-            }
-        }
+        List<String> studentList = pairDb.getOrDefault(teacher,new ArrayList<>());
+        studentList.add(student);
+        pairDb.put(teacher,studentList);
     }
 
     public static Student findStudent(String student){
