@@ -11,39 +11,39 @@ public class StudentService {
     @Autowired
     StudentRepository studentRepository;
 
-    public static void addStudent(Student student){
-        StudentRepository.saveStudent(student);
+    public void addStudent(Student student){
+        studentRepository.saveStudent(student);
     }
 
-    public static void addTeacher(Teacher teacher){
-        StudentRepository.saveTeacher(teacher);
+    public void addTeacher(Teacher teacher){
+        studentRepository.saveTeacher(teacher);
     }
 
-    public static void addStudentTeacherPair(String student, String teacher){
-        StudentRepository.saveStudentTeacherPair(student, teacher);
+    public void addStudentTeacherPair(String student, String teacher){
+        studentRepository.saveStudentTeacherPair(student, teacher);
     }
-    public static Student getStudentByName(String movie){
-        return StudentRepository.findStudent(movie);
+    public Student getStudentByName(String movie){
+        return studentRepository.findStudent(movie);
 
     }
 
-    public static Teacher getTeacherByName(String teacherName){
-        return StudentRepository.findTeacher(teacherName);
+    public Teacher getTeacherByName(String teacherName){
+        return studentRepository.findTeacher(teacherName);
     }
 
-    public static List<String> getStudentsByTeacherName(String teacher){
-        return StudentRepository.findStudentByTeacherName(teacher);
+    public List<String> getStudentsByTeacherName(String teacher){
+        return studentRepository.findStudentByTeacherName(teacher);
     }
 
-    public static List<String> getAllStudents(){
-        return StudentRepository.findAllStudents();
+    public List<String> getAllStudents(){
+        return studentRepository.findAllStudents();
     }
 
-    public static void deleteTeacherByName(String teacher){
-        StudentRepository.deleteTeacherByName(teacher);
+    public void deleteTeacherByName(String teacher){
+        studentRepository.deleteTeacherByName(teacher);
     }
 
-    public static void deleteAllTeachers(){
-        StudentRepository.deleteAllTeachers();
+    public void deleteAllTeachers(){
+        studentRepository.deleteAllTeachers();
     }
 }
