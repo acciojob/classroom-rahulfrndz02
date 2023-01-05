@@ -11,6 +11,19 @@ public class StudentService {
     @Autowired
     StudentRepository studentRepository;
 
+    public void getStudentByCourse(String course){
+        studentRepository.findStudentByCourse(course);
+    }
+    public void getStudentByRoll(int roll){
+        studentRepository.findStudentByRoll(roll);
+    }
+    public void findTeacherBySubject(String subject){
+        studentRepository.getTeacherBySubject(subject);
+    }
+
+    public void getSalaryByTeacher(double salary){
+        studentRepository.getSalaryByTeacher(salary);
+    }
     public void addStudent(Student student){
         studentRepository.saveStudent(student);
     }
@@ -22,8 +35,8 @@ public class StudentService {
     public void addStudentTeacherPair(String student, String teacher){
         studentRepository.saveStudentTeacherPair(student, teacher);
     }
-    public Student getStudentByName(String movie){
-        return studentRepository.findStudent(movie);
+    public Student getStudentByName(String name){
+        return studentRepository.findStudent(name);
 
     }
 
@@ -45,5 +58,9 @@ public class StudentService {
 
     public void deleteAllTeachers(){
         studentRepository.deleteAllTeachers();
+    }
+
+    public List<String> findStudentByScore(double score){
+        return studentRepository.findStudentByScore(score);
     }
 }

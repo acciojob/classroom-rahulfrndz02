@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public class StudentRepository {
     HashMap<String, Student> studentDb = new HashMap<>();
-    HashMap<String , Teacher> teacherDb = new HashMap<>();
+    HashMap<String, Teacher> teacherDb = new HashMap<>();
     HashMap<String, List<String>> pairDb = new HashMap<>();
 
 //    public StudentRepository(){
@@ -20,6 +20,19 @@ public class StudentRepository {
 //        this.pairDb=new HashMap<>();
 //    }
 
+    public void findStudentByCourse(String course){
+        studentDb.put(student.getCourse, course);
+    }
+    public void findStudentByRoll(int roll){
+        studentDb.put(student.getRollNumber, roll);
+    }
+    public void getTeacherBySubject(String subject){
+        teacherDb.put(teacher.setSubject, subject);
+    }
+
+    public void getSalaryByTeacher(double salary){
+        teacherDb.put(teacher.getSalary, salary);
+    }
     public void saveStudent(Student student){
         studentDb.put(student.getName(), student);
     }
@@ -61,15 +74,20 @@ public class StudentRepository {
         pairDb.remove(teacher);
     }
 
+    //delete all teachers and all students
     public void deleteAllTeachers() {
-        for(String teacher : pairDb.keySet()){
-            List<String> studentList = pairDb.get(teacher);
+        for(String teacher : pairDb.keySet()) {
+           List<String> studentList =  pairDb.get(teacher);
             for(String student : studentList){
-                if(studentDb.containsKey(student)){
-                    studentDb.remove(student);
-                }
+                if(studentDb.containsKey(student))
+                    studentDb.remove(student );
             }
         }
         pairDb.clear();
+    }
+    public List<String> findStudentByScore(double score){
+        List<String> studentList = new ArrayList<String>();
+        if(studentDb.containsKey(score)) studentList = studentDb.get(score);
+        return studentList;
     }
 }
