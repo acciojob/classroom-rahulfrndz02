@@ -22,6 +22,38 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
+    //    @PostMapping  @RequestBody
+//    @PutMapping  @RequestParam
+//    @GetMapping  @PathVariable
+//    @DeleteMapping @RequestParam
+
+
+    @GetMapping("/getStudentByCourse/{course}")
+    public ResponseEntity<Student> getStudentByCourse(@PathVariable String name){
+        Student student = null;
+        student = studentService.getStudentByCourse(name);
+        return new ResponseEntity<>(student , HttpStatus.OK);
+    }
+
+    @GetMapping("/findTeacherBySubject")
+    public ResponseEntity<Teacher> findTeacherForSubject(@PathVariable String subject){
+        Teacher teacher = null;
+        Teacher = studentService.findTeacherBySubject(subject);
+        return ResponseEntity<>(teacher, HttpStatus.CREATED);
+    }
+    @GetMapping("/findStudentByRoll/{roll}")
+    public ResponseEntity<Student> getStudentByRoll(@PathVariable int roll){
+        Student student = null;
+        student = studentService.getStudentByRoll(roll);
+        return new ResponseEntity<>(student, HttpStatus.Ok);
+    }
+    @GetMapping("/getSalaryByTeacher/{name}")
+    public ResponseEntity<Teacher>  getSalaryByTeacher(@PathVariable String teacher){
+        Teacher teacher = null; // Assign student by calling service layer method
+        teacher = studentService.getSalaryByTeacher(teacher);
+        return new ResponseEntity<>(teacher, HttpStatus.CREATED);
+    }
+
     @PostMapping("/add-student")
     public ResponseEntity<String> addStudent(@RequestBody Student student){
         studentService.addStudent(student);
@@ -78,4 +110,11 @@ public class StudentController {
         studentService.deleteAllTeachers();
         return new ResponseEntity<>("All teachers deleted successfully", HttpStatus.CREATED);
     }
+    @GetMapping("/getStudentByScore/{score}")
+    public ResponseEntity<Student> findStudentByScore(@PathVariable double score){
+        Student student = null; // Assign student by calling service layer method
+        student = studentService.getTeacherByName(score);
+        return new ResponseEntity<>(student, HttpStatus.CREATED);
+    }
+
 }
